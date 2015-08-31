@@ -1,0 +1,42 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace RM2k2XP.Converters.Formats
+{
+    /// <summary>
+    /// Represents RPG Maker XP style tileset with tileset and autotiles in separate files.
+    /// </summary>
+    public class RPGMakerXPTileset
+    {
+        public RPGMakerXPTileset()
+        {
+            AutotileBitmaps = new List<Bitmap>();
+        }
+
+        /// <summary>
+        /// Main tileset bitmap.
+        /// </summary>
+        public Bitmap TilesetBitmap { get; set; }
+
+        /// <summary>
+        /// Different autotiles for tileset.
+        /// </summary>
+        public List<Bitmap> AutotileBitmaps { get; set; }
+
+        public void SaveAll(string outputName, string outputPath)
+        {
+            TilesetBitmap.Save(Path.Combine(outputPath, String.Format("{0}.png", outputName)), ImageFormat.Png);
+
+            for (int i = 0; i < AutotileBitmaps.Count; i++)
+            {
+                AutotileBitmaps[i].Save(Path.Combine(outputPath, String.Format("{0}-auto-{1}", outputName, i)), ImageFormat.Png);
+            }
+        }
+    }
+}
