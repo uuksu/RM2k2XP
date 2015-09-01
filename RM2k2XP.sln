@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RM2k2XP", "RM2k2XP\RM2k2XP.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RM2k2XP.Converters", "RM2k2XP.Converters\RM2k2XP.Converters.csproj", "{B4509090-9437-4ED0-BFB5-1C81FDD9E2AA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RM2k2XP.Gui", "RM2k2XP.Gui\RM2k2XP.Gui.csproj", "{CDF3D99B-7F03-4313-85AA-FE6A0A6363F1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{B4509090-9437-4ED0-BFB5-1C81FDD9E2AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B4509090-9437-4ED0-BFB5-1C81FDD9E2AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B4509090-9437-4ED0-BFB5-1C81FDD9E2AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CDF3D99B-7F03-4313-85AA-FE6A0A6363F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDF3D99B-7F03-4313-85AA-FE6A0A6363F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDF3D99B-7F03-4313-85AA-FE6A0A6363F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDF3D99B-7F03-4313-85AA-FE6A0A6363F1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
