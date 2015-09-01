@@ -37,6 +37,12 @@ namespace RM2k2XP.Converters
 
         };
 
+        /// <summary>
+        /// Converts RPG Maker 2000 chipset to list of XP charsets.
+        /// </summary>
+        /// <param name="inputPath">The input path.</param>
+        /// <returns></returns>
+        /// <exception cref="System.Exception">Charset out of proportions</exception>
         public List<RPGMakerXPCharset> ToRPGMakerXpCharset(string inputPath)
         {
             Bitmap charsetBitmap = new Bitmap(inputPath);
@@ -65,23 +71,30 @@ namespace RM2k2XP.Converters
             return charsets;
         }
 
+        /// <summary>
+        /// Convert single RPG Maker 2000 character set bitmap to xp format.
+        /// </summary>
+        /// <param name="singleCharacterBitmap">The single character bitmap.</param>
+        /// <param name="frameWidth">Width of the frame.</param>
+        /// <param name="frameHeight">Height of the frame.</param>
         private RPGMakerXPCharset Convert2000ToXpFormat(Bitmap singleCharacterBitmap, int frameWidth, int frameHeight)
         {
             // XP characters sets are 4x4 frames and twice as big in resolution
             int xpCharsetHeight = frameHeight * 4 * 2;
             int xpCharsetWidth = frameWidth * 4 * 2;
 
+            Color topLeftColor = singleCharacterBitmap.GetPixel(0, 0);
+
             RPGMakerXPCharset xpCharset = new RPGMakerXPCharset {Bitmap = new Bitmap(xpCharsetWidth, xpCharsetHeight) };
 
             using (Graphics graphics = Graphics.FromImage(xpCharset.Bitmap))
             {
-
-                // GDI+ makes no sense: http://stackoverflow.com/a/10115502
+                // GDI+ makes no sence: http://stackoverflow.com/a/10115502
                 graphics.PixelOffsetMode = PixelOffsetMode.Half;
 
-                graphics.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-                graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
-                graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.None;
+                graphics.CompositingQuality = CompositingQuality.HighQuality;
+                graphics.InterpolationMode = InterpolationMode.NearestNeighbor;
+                graphics.SmoothingMode = SmoothingMode.None;
 
                 for (int y = 0; y < 4; y++)
                 {
@@ -96,6 +109,8 @@ namespace RM2k2XP.Converters
 
                             Bitmap originalFrameBitmap = singleCharacterBitmap.Clone(new Rectangle(x * frameWidth, y * frameHeight, frameWidth, frameHeight),
                                     PixelFormat.DontCare);
+
+                            originalFrameBitmap.MakeTransparent(topLeftColor);
 
                             // Draw to new bitmap and scale twice as big. For some reason one pixels needs to be added to width and height so it will draw right
                             graphics.DrawImage(originalFrameBitmap, new Rectangle(
