@@ -10,5 +10,10 @@ namespace RM2k2XP.Converters.Formats
     public class RPGMakerXPCharset
     {
         public Bitmap Bitmap { get; set; }
+
+        public void Save(string name)
+        {
+            Bitmap.Save(string.Format("{0}.png", name));
+        }
     }
 }

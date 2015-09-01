@@ -49,6 +49,12 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RM2k2XP.Converters\RM2k2XP.Converters.csproj">
+      <Project>{b4509090-9437-4ed0-bfb5-1c81fdd9e2aa}</Project>
+      <Name>RM2k2XP.Converters</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
