@@ -34,6 +34,9 @@ namespace RM2k2XP
                 case "charset":
                     ProcessCharsetConversion();
                     break;
+                case "chipset":
+                    ProcessChipsetConversion();
+                    break;
                 default:
                     Console.WriteLine("Unknown resource type.");
                     Environment.Exit(1);
@@ -58,6 +61,20 @@ namespace RM2k2XP
             {
                 charsets[i].Save(String.Format("{0}_{1}", Path.GetFileNameWithoutExtension(inputFileInfo.FullName), i));
             }
+        }
+
+        private static void ProcessChipsetConversion()
+        {
+            FileInfo inputFileInfo = new FileInfo(_commandLineOptions.InputPaths.First());
+
+            if (!inputFileInfo.Exists)
+            {
+                Console.WriteLine("Input file does not exists.");
+                Environment.Exit(1);
+            }
+
+            RPGMaker2000ChipsetConverter converter = new RPGMaker2000ChipsetConverter();
+            RPGMakerXPTileset tileset = converter.ToRPGMakerXpTileset(inputFileInfo.FullName);
         }
     }
 }

@@ -21,5 +21,10 @@ namespace RM2k2XP.Converters
         /// Rectangle in source bitmap.
         /// </summary>
         public Rectangle SourceRectangle { get; set; }
+
+        /// <summary>
+        /// Source rectangle is absolute and it should not be used in relative calculations.
+        /// </summary>
+        public bool SourceAbsolute { get; set; }
     }
 }
