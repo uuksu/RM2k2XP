@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BitmapRelationMap.cs" />
     <Compile Include="Formats\RPGMakerXPCharset.cs" />
     <Compile Include="Formats\RPGMakerXPTileset.cs" />
     <Compile Include="GraphicsUtils.cs" />
