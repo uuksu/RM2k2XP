@@ -87,19 +87,14 @@ namespace RM2k2XP.Converters
 
             RPGMakerXPCharset xpCharset = new RPGMakerXPCharset {Bitmap = new Bitmap(xpCharsetWidth, xpCharsetHeight) };
 
-            using (Graphics graphics = Graphics.FromImage(xpCharset.Bitmap))
+            using (Graphics graphics = GraphicsUtils.GetGraphicsForScaling(xpCharset.Bitmap))
             {
-                // GDI+ makes no sence: http://stackoverflow.com/a/10115502
-                graphics.PixelOffsetMode = PixelOffsetMode.Half;
-
-                graphics.CompositingQuality = CompositingQuality.HighQuality;
-                graphics.InterpolationMode = InterpolationMode.NearestNeighbor;
-                graphics.SmoothingMode = SmoothingMode.None;
-
+                // Looping through every frame of the character set
                 for (int y = 0; y < 4; y++)
                 {
                     for (int x = 0; x < 3; x++)
                     {
+                        // Checking where in the XP character set frame should be positioned
                         foreach (List<int> mapValue in rpgMaker2000CharPositionToXPMap)
                         {
                             if (mapValue[0] != x || mapValue[1] != y)
@@ -112,12 +107,18 @@ namespace RM2k2XP.Converters
 
                             originalFrameBitmap.MakeTransparent(topLeftColor);
 
-                            // Draw to new bitmap and scale twice as big. For some reason one pixels needs to be added to width and height so it will draw right
+                            // Calculating position and size for where frame should be drawn
+                            int destinationX = mapValue[2]*(frameWidth*2);
+                            int destinationY = mapValue[3]*(frameHeight*2);
+                            int scaledFrameWidth = frameWidth*2;
+                            int scaledFrameHeight = frameHeight*2;
+
+                            // Draw to new bitmap and scale twice as big
                             graphics.DrawImage(originalFrameBitmap, new Rectangle(
-                                mapValue[2] * (frameWidth * 2), 
-                                mapValue[3] * (frameHeight * 2), 
-                                frameWidth * 2,
-                                frameHeight * 2)
+                                destinationX,
+                                destinationY, 
+                                scaledFrameWidth,
+                                scaledFrameHeight)
                             );
 
                             originalFrameBitmap.Dispose();

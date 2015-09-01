@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Formats\RPGMakerXPCharset.cs" />
     <Compile Include="Formats\RPGMakerXPTileset.cs" />
+    <Compile Include="GraphicsUtils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RPGMaker2000CharsetConverter.cs" />
     <Compile Include="RPGMaker2000ChipsetConverter.cs" />
