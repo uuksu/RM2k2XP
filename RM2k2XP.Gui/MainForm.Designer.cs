@@ -38,14 +38,26 @@
             this.charsetSelectionButton = new System.Windows.Forms.Button();
             this.outputDirectorySelectButton = new System.Windows.Forms.Button();
             this.convertButton = new System.Windows.Forms.Button();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.chipsetPathTextBox = new System.Windows.Forms.TextBox();
+            this.tilesetOutputDirectoryTextBox = new System.Windows.Forms.TextBox();
+            this.chipsetSelectionButton = new System.Windows.Forms.Button();
+            this.tilesetOutputDirectorySelectButton = new System.Windows.Forms.Button();
+            this.chipsetConvertButton = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
@@ -76,7 +88,6 @@
             this.tableLayoutPanel1.Controls.Add(this.charsetSelectionButton, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.outputDirectorySelectButton, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.convertButton, 1, 4);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 5;
@@ -152,18 +163,120 @@
             this.convertButton.UseVisualStyleBackColor = true;
             this.convertButton.Click += new System.EventHandler(this.convertButton_Click);
             // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.tableLayoutPanel2);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Size = new System.Drawing.Size(498, 230);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Chipset";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 2;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 86.58537F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 13.41463F));
+            this.tableLayoutPanel2.Controls.Add(this.label3, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.label4, 0, 2);
+            this.tableLayoutPanel2.Controls.Add(this.chipsetPathTextBox, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.tilesetOutputDirectoryTextBox, 0, 3);
+            this.tableLayoutPanel2.Controls.Add(this.chipsetSelectionButton, 1, 1);
+            this.tableLayoutPanel2.Controls.Add(this.tilesetOutputDirectorySelectButton, 1, 3);
+            this.tableLayoutPanel2.Controls.Add(this.chipsetConvertButton, 1, 4);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 5;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(492, 224);
+            this.tableLayoutPanel2.TabIndex = 1;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(3, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(82, 13);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Original chipset:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(3, 60);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(85, 13);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "Output directory:";
+            // 
+            // chipsetPathTextBox
+            // 
+            this.chipsetPathTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.chipsetPathTextBox.Location = new System.Drawing.Point(3, 23);
+            this.chipsetPathTextBox.Name = "chipsetPathTextBox";
+            this.chipsetPathTextBox.Size = new System.Drawing.Size(420, 20);
+            this.chipsetPathTextBox.TabIndex = 2;
+            // 
+            // tilesetOutputDirectoryTextBox
+            // 
+            this.tilesetOutputDirectoryTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tilesetOutputDirectoryTextBox.Location = new System.Drawing.Point(3, 83);
+            this.tilesetOutputDirectoryTextBox.Name = "tilesetOutputDirectoryTextBox";
+            this.tilesetOutputDirectoryTextBox.Size = new System.Drawing.Size(420, 20);
+            this.tilesetOutputDirectoryTextBox.TabIndex = 3;
+            // 
+            // chipsetSelectionButton
+            // 
+            this.chipsetSelectionButton.Location = new System.Drawing.Point(429, 23);
+            this.chipsetSelectionButton.Name = "chipsetSelectionButton";
+            this.chipsetSelectionButton.Size = new System.Drawing.Size(60, 23);
+            this.chipsetSelectionButton.TabIndex = 4;
+            this.chipsetSelectionButton.Text = "...";
+            this.chipsetSelectionButton.UseVisualStyleBackColor = true;
+            this.chipsetSelectionButton.Click += new System.EventHandler(this.chipsetSelectionButton_Click);
+            // 
+            // tilesetOutputDirectorySelectButton
+            // 
+            this.tilesetOutputDirectorySelectButton.Location = new System.Drawing.Point(429, 83);
+            this.tilesetOutputDirectorySelectButton.Name = "tilesetOutputDirectorySelectButton";
+            this.tilesetOutputDirectorySelectButton.Size = new System.Drawing.Size(60, 23);
+            this.tilesetOutputDirectorySelectButton.TabIndex = 5;
+            this.tilesetOutputDirectorySelectButton.Text = "...";
+            this.tilesetOutputDirectorySelectButton.UseVisualStyleBackColor = true;
+            this.tilesetOutputDirectorySelectButton.Click += new System.EventHandler(this.tilesetOutputDirectorySelectButton_Click);
+            // 
+            // chipsetConvertButton
+            // 
+            this.chipsetConvertButton.Location = new System.Drawing.Point(429, 123);
+            this.chipsetConvertButton.Name = "chipsetConvertButton";
+            this.chipsetConvertButton.Size = new System.Drawing.Size(60, 23);
+            this.chipsetConvertButton.TabIndex = 6;
+            this.chipsetConvertButton.Text = "Convert";
+            this.chipsetConvertButton.UseVisualStyleBackColor = true;
+            this.chipsetConvertButton.Click += new System.EventHandler(this.chipsetConvertButton_Click);
+            // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(506, 256);
             this.Controls.Add(this.tabControl1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "MainForm";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "RM2k2XP";
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -180,6 +293,15 @@
         private System.Windows.Forms.Button charsetSelectionButton;
         private System.Windows.Forms.Button outputDirectorySelectButton;
         private System.Windows.Forms.Button convertButton;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox chipsetPathTextBox;
+        private System.Windows.Forms.TextBox tilesetOutputDirectoryTextBox;
+        private System.Windows.Forms.Button chipsetSelectionButton;
+        private System.Windows.Forms.Button tilesetOutputDirectorySelectButton;
+        private System.Windows.Forms.Button chipsetConvertButton;
     }
 }
 

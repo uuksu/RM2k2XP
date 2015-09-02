@@ -77,5 +77,57 @@ namespace RM2k2XP.Gui
             MessageBox.Show("Conversion successful!", "Conversion successful!", MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
         }
+
+        private void chipsetSelectionButton_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog fileDialog = new OpenFileDialog();
+            fileDialog.Filter = "PNG-image (*.png)|*.png";
+
+            var result = fileDialog.ShowDialog();
+
+            if (result == DialogResult.Abort || result == DialogResult.Cancel)
+            {
+                return;
+            }
+
+            chipsetPathTextBox.Text = fileDialog.FileName;
+        }
+
+        private void tilesetOutputDirectorySelectButton_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
+
+            var result = folderBrowserDialog.ShowDialog();
+
+            if (result == DialogResult.Abort || result == DialogResult.Cancel)
+            {
+                return;
+            }
+
+            tilesetOutputDirectoryTextBox.Text = folderBrowserDialog.SelectedPath;
+        }
+
+        private void chipsetConvertButton_Click(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(chipsetPathTextBox.Text) || String.IsNullOrEmpty(tilesetOutputDirectoryTextBox.Text))
+            {
+                return;
+            }
+
+            if (!File.Exists(chipsetPathTextBox.Text) || !Directory.Exists(tilesetOutputDirectoryTextBox.Text))
+            {
+                return;
+            }
+
+            FileInfo inputFileInfo = new FileInfo(chipsetPathTextBox.Text);
+
+            RPGMaker2000ChipsetConverter converter = new RPGMaker2000ChipsetConverter();
+            RPGMakerXPTileset tileset = converter.ToRPGMakerXpTileset(chipsetPathTextBox.Text);
+
+            tileset.SaveAll(Path.GetFileNameWithoutExtension(inputFileInfo.FullName), tilesetOutputDirectoryTextBox.Text);
+
+            MessageBox.Show("Conversion successful!", "Conversion successful!", MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
+        }
     }
 }
