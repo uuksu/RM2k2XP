@@ -75,6 +75,8 @@ namespace RM2k2XP
 
             RPGMaker2000ChipsetConverter converter = new RPGMaker2000ChipsetConverter();
             RPGMakerXPTileset tileset = converter.ToRPGMakerXpTileset(inputFileInfo.FullName);
+
+            tileset.SaveAll(Path.GetFileNameWithoutExtension(inputFileInfo.FullName), ".");
         }
     }
 }

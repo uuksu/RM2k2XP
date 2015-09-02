@@ -12,7 +12,7 @@ namespace RM2k2XP.Converters.Formats
     /// <summary>
     /// Represents RPG Maker XP style tileset with tileset and autotiles in separate files.
     /// </summary>
-    public class RPGMakerXPTileset
+    public class RPGMakerXPTileset : IDisposable
     {
         public RPGMakerXPTileset()
         {
@@ -35,7 +35,17 @@ namespace RM2k2XP.Converters.Formats
 
             for (int i = 0; i < AutotileBitmaps.Count; i++)
             {
-                AutotileBitmaps[i].Save(Path.Combine(outputPath, String.Format("{0}-auto-{1}", outputName, i)), ImageFormat.Png);
+                AutotileBitmaps[i].Save(Path.Combine(outputPath, String.Format("{0}-auto-{1}.png", outputName, i)), ImageFormat.Png);
+            }
+        }
+
+        public void Dispose()
+        {
+            TilesetBitmap.Dispose();
+
+            foreach (Bitmap autotileBitmap in AutotileBitmaps)
+            {
+                autotileBitmap.Dispose();
             }
         }
     }
