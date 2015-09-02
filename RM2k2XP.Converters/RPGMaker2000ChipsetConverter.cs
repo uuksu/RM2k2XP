@@ -98,6 +98,86 @@ namespace RM2k2XP.Converters
         };
         #endregion
 
+        #region Deep water autotile bitmap relational maps
+        private readonly List<BitmapRelationMap> deepWaterAutotileBitmapRelationMaps = new List<BitmapRelationMap>
+        {
+            // Top-left 16x16
+            new BitmapRelationMap { SourceRectangle = new Rectangle(0, 96, 16, 16), DestinationRectangle = new Rectangle(0, 0, 16, 16) },
+
+            // Top-right 16x16
+            new BitmapRelationMap { SourceRectangle = new Rectangle(0, 112, 16, 16), DestinationRectangle = new Rectangle(32, 0, 16, 16) },
+
+            // Border top-left 8x8
+            new BitmapRelationMap { SourceRectangle = new Rectangle(0, 96, 8, 8), DestinationRectangle = new Rectangle(0, 16, 8, 8) },
+
+            // Border top-right 8x8
+            new BitmapRelationMap { SourceRectangle = new Rectangle(8, 96, 8, 8), DestinationRectangle = new Rectangle(40, 16, 8, 8) },
+
+            // Border bottom-left 8x8
+            new BitmapRelationMap { SourceRectangle = new Rectangle(0, 104, 8, 8), DestinationRectangle = new Rectangle(0, 56, 8, 8) },
+
+            // Border bottom-right 8x8
+            new BitmapRelationMap { SourceRectangle = new Rectangle(8, 104, 8, 8), DestinationRectangle = new Rectangle(40, 56, 8, 8) },
+
+            // Border left 8x16
+            new BitmapRelationMap { SourceRectangle = new Rectangle(0, 112, 8, 16), DestinationRectangle = new Rectangle(0, 32, 8, 16) },
+
+            // Border left top 8x8
+            new BitmapRelationMap { SourceRectangle = new Rectangle(0, 120, 8, 8), DestinationRectangle = new Rectangle(0, 24, 8, 8) },
+
+            // Border left bottom 8x8
+            new BitmapRelationMap { SourceRectangle = new Rectangle(0, 112, 8, 8), DestinationRectangle = new Rectangle(0, 48, 8, 8) },
+
+            // Border right 8x16
+            new BitmapRelationMap { SourceRectangle = new Rectangle(8, 112, 8, 16), DestinationRectangle = new Rectangle(40, 32, 8, 16) },
+
+            // Border right top 8x8
+            new BitmapRelationMap { SourceRectangle = new Rectangle(8, 120, 8, 8), DestinationRectangle = new Rectangle(40, 24, 8, 8) },
+
+            // Border right bottom 8x8
+            new BitmapRelationMap { SourceRectangle = new Rectangle(8, 112, 8, 8), DestinationRectangle = new Rectangle(40, 48, 8, 8) },
+
+            // Border bottom 16x8
+            new BitmapRelationMap { SourceRectangle = new Rectangle(0, 120, 16, 8), DestinationRectangle = new Rectangle(16, 56, 16, 8) },
+
+            // Border bottom left 8x8
+            new BitmapRelationMap { SourceRectangle = new Rectangle(8, 120, 8, 8), DestinationRectangle = new Rectangle(8, 56, 8, 8) },
+
+            // Border bottom right 8x8
+            new BitmapRelationMap { SourceRectangle = new Rectangle(0, 120, 8, 8), DestinationRectangle = new Rectangle(32, 56, 8, 8) },
+
+            // Border top 16x8
+            new BitmapRelationMap { SourceRectangle = new Rectangle(0, 112, 16, 8), DestinationRectangle = new Rectangle(16, 16, 16, 8) },
+            
+            // Border top left 8x8
+            new BitmapRelationMap { SourceRectangle = new Rectangle(8, 112, 8, 8), DestinationRectangle = new Rectangle(8, 16, 8, 8) },
+
+            // Border top right 8x8
+            new BitmapRelationMap { SourceRectangle = new Rectangle(0, 112, 8, 8), DestinationRectangle = new Rectangle(32, 16, 8, 8) },
+
+            // Center 16x16
+            new BitmapRelationMap { SourceRectangle = new Rectangle(0, 112, 16, 16), DestinationRectangle = new Rectangle(16, 32, 16, 16) },
+
+            // Around center
+            new BitmapRelationMap { SourceRectangle = new Rectangle(0, 112, 8, 8), DestinationRectangle = new Rectangle(32, 32, 8, 8) },
+            new BitmapRelationMap { SourceRectangle = new Rectangle(0, 112, 8, 8), DestinationRectangle = new Rectangle(32, 48, 8, 8) },
+            new BitmapRelationMap { SourceRectangle = new Rectangle(0, 112, 8, 8), DestinationRectangle = new Rectangle(16, 48, 8, 8) },
+
+            new BitmapRelationMap { SourceRectangle = new Rectangle(8, 112, 8, 8), DestinationRectangle = new Rectangle(8, 48, 8, 8) },
+            new BitmapRelationMap { SourceRectangle = new Rectangle(8, 112, 8, 8), DestinationRectangle = new Rectangle(24, 48, 8, 8) },
+            new BitmapRelationMap { SourceRectangle = new Rectangle(8, 112, 8, 8), DestinationRectangle = new Rectangle(8, 32, 8, 8) },
+
+            new BitmapRelationMap { SourceRectangle = new Rectangle(0, 120, 8, 8), DestinationRectangle = new Rectangle(16, 24, 8, 8) },
+            new BitmapRelationMap { SourceRectangle = new Rectangle(0, 120, 8, 8), DestinationRectangle = new Rectangle(32, 24, 8, 8) },
+            new BitmapRelationMap { SourceRectangle = new Rectangle(0, 120, 8, 8), DestinationRectangle = new Rectangle(32, 40, 8, 8) },
+
+            new BitmapRelationMap { SourceRectangle = new Rectangle(8, 120, 8, 8), DestinationRectangle = new Rectangle(8, 24, 8, 8) },
+            new BitmapRelationMap { SourceRectangle = new Rectangle(8, 120, 8, 8), DestinationRectangle = new Rectangle(24, 24, 8, 8) },
+            new BitmapRelationMap { SourceRectangle = new Rectangle(8, 120, 8, 8), DestinationRectangle = new Rectangle(8, 40, 8, 8) }
+
+        };
+        #endregion
+
         /// <summary>
         /// Convert RPG Maker 2000 chipset to RPG Maker XP format.
         /// </summary>
@@ -105,12 +185,13 @@ namespace RM2k2XP.Converters
         /// <returns></returns>
         public RPGMakerXPTileset ToRPGMakerXpTileset(string inputPath)
         {
-            Bitmap sourceBitmap = new Bitmap(inputPath);
+            Bitmap chipsetBitmap = new Bitmap(inputPath);
 
             RPGMakerXPTileset tileset = new RPGMakerXPTileset();
-            tileset.AutotileBitmaps.AddRange(ExtractWaterAutotiles(sourceBitmap));
+            tileset.AutotileBitmaps.AddRange(ExtractWaterAutotiles(chipsetBitmap));
+            tileset.AutotileBitmaps.Add(ExtractDeepWaterAutotile(chipsetBitmap));
 
-            sourceBitmap.Dispose();
+            chipsetBitmap.Dispose();
 
             return tileset;
         }
@@ -179,6 +260,50 @@ namespace RM2k2XP.Converters
             }
 
             return waterAutotilesBitmaps;
-        } 
+        }
+
+        private Bitmap ExtractDeepWaterAutotile(Bitmap chipsetBitmap)
+        {
+            Bitmap destinationBitmap = new Bitmap(Autotile2000Width, Autotile2000Height);
+
+            using (Graphics graphics = GraphicsUtils.GetGraphicsForScaling(destinationBitmap))
+            {
+                for (int frameIndex = 0; frameIndex < 3; frameIndex++)
+                {
+                    foreach (BitmapRelationMap bitmapRelationMap in deepWaterAutotileBitmapRelationMaps)
+                    {
+                        Rectangle calculatedSourceRectangle = bitmapRelationMap.SourceRectangle;
+                        calculatedSourceRectangle.X += (frameIndex * TileSize);
+
+                        // Destination should change depending on frame
+                        Rectangle calculatedDestinationRectangle =
+                            new Rectangle(
+                                bitmapRelationMap.DestinationRectangle.X + (frameIndex * 48),
+                                bitmapRelationMap.DestinationRectangle.Y,
+                                bitmapRelationMap.DestinationRectangle.Width,
+                                bitmapRelationMap.DestinationRectangle.Height);
+
+
+                        Bitmap temporaryBitmap = chipsetBitmap.Clone(calculatedSourceRectangle, PixelFormat.DontCare);
+
+                        graphics.DrawImage(temporaryBitmap, calculatedDestinationRectangle);
+
+                        temporaryBitmap.Dispose();
+                    }
+                }
+            }
+
+            // XP tiles are twice the size of 2000 tiles so they need to scaled up
+            Bitmap scaledBitmap = new Bitmap(Autotile2000Width * 2, Autotile2000Height * 2);
+
+            using (Graphics scaleGraphics = GraphicsUtils.GetGraphicsForScaling(scaledBitmap))
+            {
+                scaleGraphics.DrawImage(destinationBitmap, new Rectangle(0, 0, Autotile2000Width * 2, Autotile2000Height * 2));
+            }
+
+            destinationBitmap.Dispose();
+
+            return scaledBitmap;
+        }
     }
 }
