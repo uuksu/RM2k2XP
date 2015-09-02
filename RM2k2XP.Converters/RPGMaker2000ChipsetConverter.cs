@@ -12,8 +12,11 @@ namespace RM2k2XP.Converters
     public class RPGMaker2000ChipsetConverter
     {
         // Original 16x16 sized autotile without scaling
-        private const int Autotile2000Width = 144;
+        private const int AnimatedAutotile2000Width = 144;
+        private const int AnimatedAutotile2000Height = 64;
+        private const int Autotile2000Width = 48;
         private const int Autotile2000Height = 64;
+
         private const int TileSize = 16;
 
         #region Water autotiles bitmap relational maps
@@ -185,6 +188,24 @@ namespace RM2k2XP.Converters
             new BitmapRelationMap { SourceRectangle = new Rectangle(48, 80, 16, 16), DestinationRectangle = new Rectangle(16, 0, 16, 16) },
             new BitmapRelationMap { SourceRectangle = new Rectangle(48, 96, 16, 16), DestinationRectangle = new Rectangle(32, 0, 16, 16) },
             new BitmapRelationMap { SourceRectangle = new Rectangle(48, 112, 16, 16), DestinationRectangle = new Rectangle(48, 0, 16, 16) },
+        };
+        #endregion
+
+        #region Autotiles bitmap relation maps
+        private readonly List<BitmapRelationMap> autotilesBitmapRelationMaps = new List<BitmapRelationMap>
+        {
+            new BitmapRelationMap { SourceRectangle = new Rectangle(96, 0, 48, 64), DestinationRectangle = new Rectangle(0, 0, 48, 64) },
+            new BitmapRelationMap { SourceRectangle = new Rectangle(144, 0, 48, 64), DestinationRectangle = new Rectangle(0, 0, 48, 64) },
+            new BitmapRelationMap { SourceRectangle = new Rectangle(96, 64, 48, 64), DestinationRectangle = new Rectangle(0, 0, 48, 64) },
+            new BitmapRelationMap { SourceRectangle = new Rectangle(144, 64, 48, 64), DestinationRectangle = new Rectangle(0, 0, 48, 64) },
+            new BitmapRelationMap { SourceRectangle = new Rectangle(0, 128, 48, 64), DestinationRectangle = new Rectangle(0, 0, 48, 64) },
+            new BitmapRelationMap { SourceRectangle = new Rectangle(48, 128, 48, 64), DestinationRectangle = new Rectangle(0, 0, 48, 64) },
+            new BitmapRelationMap { SourceRectangle = new Rectangle(96, 128, 48, 64), DestinationRectangle = new Rectangle(0, 0, 48, 64) },
+            new BitmapRelationMap { SourceRectangle = new Rectangle(144, 128, 48, 64), DestinationRectangle = new Rectangle(0, 0, 48, 64) },
+            new BitmapRelationMap { SourceRectangle = new Rectangle(0, 192, 48, 64), DestinationRectangle = new Rectangle(0, 0, 48, 64) },
+            new BitmapRelationMap { SourceRectangle = new Rectangle(48, 192, 48, 64), DestinationRectangle = new Rectangle(0, 0, 48, 64) },
+            new BitmapRelationMap { SourceRectangle = new Rectangle(96, 192, 48, 64), DestinationRectangle = new Rectangle(0, 0, 48, 64) },
+            new BitmapRelationMap { SourceRectangle = new Rectangle(144, 192, 48, 64), DestinationRectangle = new Rectangle(0, 0, 48, 64) },
         }; 
         #endregion
 
@@ -200,6 +221,7 @@ namespace RM2k2XP.Converters
             RPGMakerXPTileset tileset = new RPGMakerXPTileset();
             tileset.AutotileBitmaps.AddRange(ExtractWaterAutotiles(chipsetBitmap));
             tileset.AutotileBitmaps.Add(ExtractDeepWaterAutotile(chipsetBitmap));
+            tileset.AutotileBitmaps.AddRange(ExtractAutotiles(chipsetBitmap));
             tileset.AnimationBitmap = ExtractAnimationSheet(chipsetBitmap);
 
             chipsetBitmap.Dispose();
@@ -218,7 +240,7 @@ namespace RM2k2XP.Converters
 
             for (int waterAutotileIndex = 0; waterAutotileIndex < 2; waterAutotileIndex++)
             {
-                Bitmap destinationBitmap = new Bitmap(Autotile2000Width, Autotile2000Height);
+                Bitmap destinationBitmap = new Bitmap(AnimatedAutotile2000Width, AnimatedAutotile2000Height);
 
                 using (Graphics graphics = GraphicsUtils.GetGraphicsForScaling(destinationBitmap))
                 {
@@ -258,11 +280,11 @@ namespace RM2k2XP.Converters
                 }
 
                 // XP tiles are twice the size of 2000 tiles so they need to scaled up
-                Bitmap scaledBitmap = new Bitmap(Autotile2000Width * 2, Autotile2000Height * 2);
+                Bitmap scaledBitmap = new Bitmap(AnimatedAutotile2000Width * 2, AnimatedAutotile2000Height * 2);
 
                 using (Graphics scaleGraphics = GraphicsUtils.GetGraphicsForScaling(scaledBitmap))
                 {
-                    scaleGraphics.DrawImage(destinationBitmap, new Rectangle(0, 0, Autotile2000Width * 2, Autotile2000Height * 2));
+                    scaleGraphics.DrawImage(destinationBitmap, new Rectangle(0, 0, AnimatedAutotile2000Width * 2, AnimatedAutotile2000Height * 2));
                 }
 
                 destinationBitmap.Dispose();
@@ -280,7 +302,7 @@ namespace RM2k2XP.Converters
         /// <returns></returns>
         private Bitmap ExtractDeepWaterAutotile(Bitmap chipsetBitmap)
         {
-            Bitmap destinationBitmap = new Bitmap(Autotile2000Width, Autotile2000Height);
+            Bitmap destinationBitmap = new Bitmap(AnimatedAutotile2000Width, AnimatedAutotile2000Height);
 
             using (Graphics graphics = GraphicsUtils.GetGraphicsForScaling(destinationBitmap))
             {
@@ -310,11 +332,11 @@ namespace RM2k2XP.Converters
             }
 
             // XP tiles are twice the size of 2000 tiles so they need to scaled up
-            Bitmap scaledBitmap = new Bitmap(Autotile2000Width * 2, Autotile2000Height * 2);
+            Bitmap scaledBitmap = new Bitmap(AnimatedAutotile2000Width * 2, AnimatedAutotile2000Height * 2);
 
             using (Graphics scaleGraphics = GraphicsUtils.GetGraphicsForScaling(scaledBitmap))
             {
-                scaleGraphics.DrawImage(destinationBitmap, new Rectangle(0, 0, Autotile2000Width * 2, Autotile2000Height * 2));
+                scaleGraphics.DrawImage(destinationBitmap, new Rectangle(0, 0, AnimatedAutotile2000Width * 2, AnimatedAutotile2000Height * 2));
             }
 
             destinationBitmap.Dispose();
@@ -371,5 +393,28 @@ namespace RM2k2XP.Converters
 
             return scaledBitmap;
         }
+
+        private List<Bitmap> ExtractAutotiles(Bitmap chipsetBitmap)
+        {
+            List<Bitmap> autotileBitmaps = new List<Bitmap>();
+
+            foreach (BitmapRelationMap bitmapRelationMap in autotilesBitmapRelationMaps)
+            {
+                Bitmap destinationBitmap = new Bitmap(Autotile2000Width * 2, Autotile2000Height * 2);
+
+                using (Graphics scaleGraphics = GraphicsUtils.GetGraphicsForScaling(destinationBitmap))
+                {
+                    Bitmap temporaryBitmap = chipsetBitmap.Clone(bitmapRelationMap.SourceRectangle, PixelFormat.DontCare);
+
+                    scaleGraphics.DrawImage(temporaryBitmap, new Rectangle(0, 0, Autotile2000Width * 2, Autotile2000Height * 2));
+
+                    temporaryBitmap.Dispose();
+                }
+
+                autotileBitmaps.Add(destinationBitmap);
+            }
+
+            return autotileBitmaps;
+        }  
     }
 }
