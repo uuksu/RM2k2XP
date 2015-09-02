@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using CommandLine;
 using CommandLine.Text;
 
-namespace RM2k2XP
+namespace RM2k2XP.Cli
 {
     class CommandLineOptions
     {

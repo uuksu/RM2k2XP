@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RM2k2XP", "RM2k2XP\RM2k2XP.csproj", "{7E36A6AE-227C-4E64-BF27-B904608C336D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RM2k2XP.Cli", "RM2k2XP.Cli\RM2k2XP.Cli.csproj", "{7E36A6AE-227C-4E64-BF27-B904608C336D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RM2k2XP.Converters", "RM2k2XP.Converters\RM2k2XP.Converters.csproj", "{B4509090-9437-4ED0-BFB5-1C81FDD9E2AA}"
 EndProject

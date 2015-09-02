@@ -8,7 +8,7 @@ using CommandLine;
 using RM2k2XP.Converters;
 using RM2k2XP.Converters.Formats;
 
-namespace RM2k2XP
+namespace RM2k2XP.Cli
 {
     class Program
     {

@@ -7,7 +7,7 @@
     <ProjectGuid>{7E36A6AE-227C-4E64-BF27-B904608C336D}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>RM2k2XP</RootNamespace>
+    <RootNamespace>RM2k2XP.Cli</RootNamespace>
     <AssemblyName>RM2k2XP</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
