@@ -33,7 +33,7 @@ namespace RM2k2XP.Converters.Formats
             
         public void SaveAll(string outputName, string outputPath)
         {
-            TilesetBitmap.Save(Path.Combine(outputPath, String.Format("{0}.png", outputName)), ImageFormat.Png);
+            TilesetBitmap.Save(Path.Combine(outputPath, String.Format("{0}-tileset.png", outputName)), ImageFormat.Png);
 
             for (int i = 0; i < AutotileBitmaps.Count; i++)
             {

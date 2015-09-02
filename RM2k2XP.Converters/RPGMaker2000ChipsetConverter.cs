@@ -209,6 +209,24 @@ namespace RM2k2XP.Converters
         };
         #endregion
 
+        #region Autotiles center tiles bitmap relation maps
+        private readonly List<BitmapRelationMap> tilesBitmapRelationMaps = new List<BitmapRelationMap>
+        {
+            new BitmapRelationMap { SourceRectangle = new Rectangle(112, 32, 16, 16), DestinationRectangle = new Rectangle(96, 0, 16, 16) },
+            new BitmapRelationMap { SourceRectangle = new Rectangle(160, 32, 16, 16), DestinationRectangle = new Rectangle(112, 0, 16, 16) },
+            new BitmapRelationMap { SourceRectangle = new Rectangle(112, 96, 16, 16), DestinationRectangle = new Rectangle(96, 16, 16, 16) },
+            new BitmapRelationMap { SourceRectangle = new Rectangle(160, 96, 16, 16), DestinationRectangle = new Rectangle(112, 16, 16, 16) },
+            new BitmapRelationMap { SourceRectangle = new Rectangle(16, 160, 16, 16), DestinationRectangle = new Rectangle(96, 32, 16, 16) },
+            new BitmapRelationMap { SourceRectangle = new Rectangle(64, 160, 16, 16), DestinationRectangle = new Rectangle(112, 32, 16, 16) },
+            new BitmapRelationMap { SourceRectangle = new Rectangle(112, 160, 16, 16), DestinationRectangle = new Rectangle(96, 48, 16, 16) },
+            new BitmapRelationMap { SourceRectangle = new Rectangle(160, 160, 16, 16), DestinationRectangle = new Rectangle(112, 48, 16, 16) },
+            new BitmapRelationMap { SourceRectangle = new Rectangle(16, 224, 16, 16), DestinationRectangle = new Rectangle(96, 64, 16, 16) },
+            new BitmapRelationMap { SourceRectangle = new Rectangle(64, 224, 16, 16), DestinationRectangle = new Rectangle(112, 64, 16, 16) },
+            new BitmapRelationMap { SourceRectangle = new Rectangle(112, 224, 16, 16), DestinationRectangle = new Rectangle(96, 80, 16, 16) },
+            new BitmapRelationMap { SourceRectangle = new Rectangle(160, 224, 16, 16), DestinationRectangle = new Rectangle(112, 80, 16, 16) }
+        }; 
+        #endregion
+
         /// <summary>
         /// Convert RPG Maker 2000 chipset to RPG Maker XP format.
         /// </summary>
@@ -424,7 +442,7 @@ namespace RM2k2XP.Converters
             Color lowLayerBackgroundColor = chipsetBitmap.GetPixel(368, 112);
             Color topLayerBackgroundColor = chipsetBitmap.GetPixel(288, 128);
 
-            Bitmap destinationBitmap = new Bitmap(96, 768);
+            Bitmap destinationBitmap = new Bitmap(128, 768);
 
             using (Graphics graphics = GraphicsUtils.GetGraphicsForScaling(destinationBitmap))
             {
@@ -457,14 +475,24 @@ namespace RM2k2XP.Converters
                 graphics.DrawImage(temporaryBitmap, new Rectangle(0, 512, 96, 256));
 
                 temporaryBitmap.Dispose();
+
+                // Adding center tiles from autotiles for easier use
+                foreach (BitmapRelationMap bitmapRelationMap in tilesBitmapRelationMaps)
+                {
+                    temporaryBitmap = chipsetBitmap.Clone(bitmapRelationMap.SourceRectangle, PixelFormat.DontCare);
+                    graphics.DrawImage(temporaryBitmap, bitmapRelationMap.DestinationRectangle);
+
+                    temporaryBitmap.Dispose();
+                }
             }
+
 
             // XP tiles are twice the size of 2000 tiles so they need to scaled up
             Bitmap scaledBitmap = new Bitmap(256, 768 * 2);
 
             using (Graphics scaleGraphics = GraphicsUtils.GetGraphicsForScaling(scaledBitmap))
             {
-                scaleGraphics.DrawImage(destinationBitmap, new Rectangle(0, 0, 96 * 2, 768 * 2));
+                scaleGraphics.DrawImage(destinationBitmap, new Rectangle(0, 0, 256, 768 * 2));
             }
 
             destinationBitmap.Dispose();
