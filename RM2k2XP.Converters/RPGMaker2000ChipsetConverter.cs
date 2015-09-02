@@ -178,6 +178,16 @@ namespace RM2k2XP.Converters
         };
         #endregion
 
+        #region Animation bitmap relational maps
+        private readonly List<BitmapRelationMap> animationBitmapRelationMaps = new List<BitmapRelationMap>
+        {
+            new BitmapRelationMap { SourceRectangle = new Rectangle(48, 64, 16, 16), DestinationRectangle = new Rectangle(0, 0, 16, 16) },
+            new BitmapRelationMap { SourceRectangle = new Rectangle(48, 80, 16, 16), DestinationRectangle = new Rectangle(16, 0, 16, 16) },
+            new BitmapRelationMap { SourceRectangle = new Rectangle(48, 96, 16, 16), DestinationRectangle = new Rectangle(32, 0, 16, 16) },
+            new BitmapRelationMap { SourceRectangle = new Rectangle(48, 112, 16, 16), DestinationRectangle = new Rectangle(48, 0, 16, 16) },
+        }; 
+        #endregion
+
         /// <summary>
         /// Convert RPG Maker 2000 chipset to RPG Maker XP format.
         /// </summary>
@@ -190,6 +200,7 @@ namespace RM2k2XP.Converters
             RPGMakerXPTileset tileset = new RPGMakerXPTileset();
             tileset.AutotileBitmaps.AddRange(ExtractWaterAutotiles(chipsetBitmap));
             tileset.AutotileBitmaps.Add(ExtractDeepWaterAutotile(chipsetBitmap));
+            tileset.AnimationBitmap = ExtractAnimationSheet(chipsetBitmap);
 
             chipsetBitmap.Dispose();
 
@@ -262,6 +273,11 @@ namespace RM2k2XP.Converters
             return waterAutotilesBitmaps;
         }
 
+        /// <summary>
+        /// Extracts the deep water autotile from chipset.
+        /// </summary>
+        /// <param name="chipsetBitmap">The chipset bitmap.</param>
+        /// <returns></returns>
         private Bitmap ExtractDeepWaterAutotile(Bitmap chipsetBitmap)
         {
             Bitmap destinationBitmap = new Bitmap(Autotile2000Width, Autotile2000Height);
@@ -299,6 +315,56 @@ namespace RM2k2XP.Converters
             using (Graphics scaleGraphics = GraphicsUtils.GetGraphicsForScaling(scaledBitmap))
             {
                 scaleGraphics.DrawImage(destinationBitmap, new Rectangle(0, 0, Autotile2000Width * 2, Autotile2000Height * 2));
+            }
+
+            destinationBitmap.Dispose();
+
+            return scaledBitmap;
+        }
+
+        /// <summary>
+        /// Extracts the animations from chipset and convert them to XP charset animation sheet.
+        /// </summary>
+        /// <param name="chipsetBitmap">The chipset bitmap.</param>
+        /// <returns></returns>
+        private Bitmap ExtractAnimationSheet(Bitmap chipsetBitmap)
+        {
+            // There is four frames per animation and animation sheet should be chipset sized
+            Bitmap destinationBitmap = new Bitmap(TileSize * 4, TileSize * 4);
+
+            using (Graphics graphics = GraphicsUtils.GetGraphicsForScaling(destinationBitmap))
+            {
+                // There is three animations in chipset
+                for (int animationIndex = 0; animationIndex < 3; animationIndex++)
+                {
+                    foreach (BitmapRelationMap bitmapRelationMap in animationBitmapRelationMaps)
+                    {
+                        Rectangle calculatedSourceRectangle = bitmapRelationMap.SourceRectangle;
+                        calculatedSourceRectangle.X += (animationIndex * TileSize);
+
+                        // Destination should change depending on frame
+                        Rectangle calculatedDestinationRectangle =
+                            new Rectangle(
+                                bitmapRelationMap.DestinationRectangle.X,
+                                bitmapRelationMap.DestinationRectangle.Y + (animationIndex * TileSize),
+                                bitmapRelationMap.DestinationRectangle.Width,
+                                bitmapRelationMap.DestinationRectangle.Height);
+
+                        Bitmap temporaryBitmap = chipsetBitmap.Clone(calculatedSourceRectangle, PixelFormat.DontCare);
+
+                        graphics.DrawImage(temporaryBitmap, calculatedDestinationRectangle);
+
+                        temporaryBitmap.Dispose();
+                    }
+                }
+            }
+
+            // XP tiles are twice the size of 2000 tiles so they need to scaled up
+            Bitmap scaledBitmap = new Bitmap(TileSize * 4 * 2, TileSize * 4 * 2);
+
+            using (Graphics scaleGraphics = GraphicsUtils.GetGraphicsForScaling(scaledBitmap))
+            {
+                scaleGraphics.DrawImage(destinationBitmap, new Rectangle(0, 0, TileSize * 4 * 2, TileSize * 4 * 2));
             }
 
             destinationBitmap.Dispose();

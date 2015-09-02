@@ -29,6 +29,8 @@ namespace RM2k2XP.Converters.Formats
         /// </summary>
         public List<Bitmap> AutotileBitmaps { get; set; }
 
+        public Bitmap AnimationBitmap { get; set; }
+            
         public void SaveAll(string outputName, string outputPath)
         {
             //TilesetBitmap.Save(Path.Combine(outputPath, String.Format("{0}.png", outputName)), ImageFormat.Png);
@@ -37,6 +39,8 @@ namespace RM2k2XP.Converters.Formats
             {
                 AutotileBitmaps[i].Save(Path.Combine(outputPath, String.Format("{0}-auto-{1}.png", outputName, i)), ImageFormat.Png);
             }
+
+            AnimationBitmap.Save(Path.Combine(outputPath, String.Format("{0}-anim.png", outputName)), ImageFormat.Png);
         }
 
         public void Dispose()
