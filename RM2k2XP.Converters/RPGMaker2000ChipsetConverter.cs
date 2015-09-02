@@ -194,18 +194,18 @@ namespace RM2k2XP.Converters
         #region Autotiles bitmap relation maps
         private readonly List<BitmapRelationMap> autotilesBitmapRelationMaps = new List<BitmapRelationMap>
         {
-            new BitmapRelationMap { SourceRectangle = new Rectangle(96, 0, 48, 64), DestinationRectangle = new Rectangle(0, 0, 48, 64) },
-            new BitmapRelationMap { SourceRectangle = new Rectangle(144, 0, 48, 64), DestinationRectangle = new Rectangle(0, 0, 48, 64) },
-            new BitmapRelationMap { SourceRectangle = new Rectangle(96, 64, 48, 64), DestinationRectangle = new Rectangle(0, 0, 48, 64) },
-            new BitmapRelationMap { SourceRectangle = new Rectangle(144, 64, 48, 64), DestinationRectangle = new Rectangle(0, 0, 48, 64) },
-            new BitmapRelationMap { SourceRectangle = new Rectangle(0, 128, 48, 64), DestinationRectangle = new Rectangle(0, 0, 48, 64) },
-            new BitmapRelationMap { SourceRectangle = new Rectangle(48, 128, 48, 64), DestinationRectangle = new Rectangle(0, 0, 48, 64) },
-            new BitmapRelationMap { SourceRectangle = new Rectangle(96, 128, 48, 64), DestinationRectangle = new Rectangle(0, 0, 48, 64) },
-            new BitmapRelationMap { SourceRectangle = new Rectangle(144, 128, 48, 64), DestinationRectangle = new Rectangle(0, 0, 48, 64) },
-            new BitmapRelationMap { SourceRectangle = new Rectangle(0, 192, 48, 64), DestinationRectangle = new Rectangle(0, 0, 48, 64) },
-            new BitmapRelationMap { SourceRectangle = new Rectangle(48, 192, 48, 64), DestinationRectangle = new Rectangle(0, 0, 48, 64) },
-            new BitmapRelationMap { SourceRectangle = new Rectangle(96, 192, 48, 64), DestinationRectangle = new Rectangle(0, 0, 48, 64) },
-            new BitmapRelationMap { SourceRectangle = new Rectangle(144, 192, 48, 64), DestinationRectangle = new Rectangle(0, 0, 48, 64) },
+            new BitmapRelationMap { SourceRectangle = new Rectangle(96, 0, 48, 64) },
+            new BitmapRelationMap { SourceRectangle = new Rectangle(144, 0, 48, 64) },
+            new BitmapRelationMap { SourceRectangle = new Rectangle(96, 64, 48, 64) },
+            new BitmapRelationMap { SourceRectangle = new Rectangle(144, 64, 48, 64) },
+            new BitmapRelationMap { SourceRectangle = new Rectangle(0, 128, 48, 64) },
+            new BitmapRelationMap { SourceRectangle = new Rectangle(48, 128, 48, 64) },
+            new BitmapRelationMap { SourceRectangle = new Rectangle(96, 128, 48, 64) },
+            new BitmapRelationMap { SourceRectangle = new Rectangle(144, 128, 48, 64) },
+            new BitmapRelationMap { SourceRectangle = new Rectangle(0, 192, 48, 64) },
+            new BitmapRelationMap { SourceRectangle = new Rectangle(48, 192, 48, 64) },
+            new BitmapRelationMap { SourceRectangle = new Rectangle(96, 192, 48, 64) },
+            new BitmapRelationMap { SourceRectangle = new Rectangle(144, 192, 48, 64) },
         };
         #endregion
 
@@ -235,6 +235,11 @@ namespace RM2k2XP.Converters
         public RPGMakerXPTileset ToRPGMakerXpTileset(string inputPath)
         {
             Bitmap chipsetBitmap = new Bitmap(inputPath);
+
+            if (chipsetBitmap.Width != 480 || chipsetBitmap.Height != 256)
+            {
+                throw new Exception("Chipset out of proportions.");
+            }
 
             RPGMakerXPTileset tileset = new RPGMakerXPTileset();
             tileset.AutotileBitmaps.AddRange(ExtractWaterAutotiles(chipsetBitmap));
@@ -318,7 +323,7 @@ namespace RM2k2XP.Converters
         /// Extracts the deep water autotile from chipset.
         /// </summary>
         /// <param name="chipsetBitmap">The chipset bitmap.</param>
-        /// <returns></returns>
+        /// <returns>Autotile bitmap in XP format.</returns>
         private Bitmap ExtractDeepWaterAutotile(Bitmap chipsetBitmap)
         {
             Bitmap destinationBitmap = new Bitmap(AnimatedAutotile2000Width, AnimatedAutotile2000Height);
@@ -367,7 +372,7 @@ namespace RM2k2XP.Converters
         /// Extracts the animations from chipset and convert them to XP charset animation sheet.
         /// </summary>
         /// <param name="chipsetBitmap">The chipset bitmap.</param>
-        /// <returns></returns>
+        /// <returns>Animation in XP character set format.</returns>
         private Bitmap ExtractAnimationSheet(Bitmap chipsetBitmap)
         {
             // There is four frames per animation and animation sheet should be chipset sized
@@ -413,6 +418,11 @@ namespace RM2k2XP.Converters
             return scaledBitmap;
         }
 
+        /// <summary>
+        /// Extracts 12 autotiles from chipset to XP format.
+        /// </summary>
+        /// <param name="chipsetBitmap">The chipset bitmap.</param>
+        /// <returns>Autotile bitmaps in XP format.</returns>
         private List<Bitmap> ExtractAutotiles(Bitmap chipsetBitmap)
         {
             List<Bitmap> autotileBitmaps = new List<Bitmap>();
@@ -436,6 +446,11 @@ namespace RM2k2XP.Converters
             return autotileBitmaps;
         }
 
+        /// <summary>
+        /// Extracts the tileset.
+        /// </summary>
+        /// <param name="chipsetBitmap">The chipset bitmap.</param>
+        /// <returns>Tileset in XP format.</returns>
         private Bitmap ExtractTileset(Bitmap chipsetBitmap)
         {
             // There is own background color tiles in chipset for top and low layers
@@ -485,7 +500,6 @@ namespace RM2k2XP.Converters
                     temporaryBitmap.Dispose();
                 }
             }
-
 
             // XP tiles are twice the size of 2000 tiles so they need to scaled up
             Bitmap scaledBitmap = new Bitmap(256, 768 * 2);
