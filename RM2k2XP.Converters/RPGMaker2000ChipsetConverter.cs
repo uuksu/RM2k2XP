@@ -206,7 +206,7 @@ namespace RM2k2XP.Converters
             new BitmapRelationMap { SourceRectangle = new Rectangle(48, 192, 48, 64), DestinationRectangle = new Rectangle(0, 0, 48, 64) },
             new BitmapRelationMap { SourceRectangle = new Rectangle(96, 192, 48, 64), DestinationRectangle = new Rectangle(0, 0, 48, 64) },
             new BitmapRelationMap { SourceRectangle = new Rectangle(144, 192, 48, 64), DestinationRectangle = new Rectangle(0, 0, 48, 64) },
-        }; 
+        };
         #endregion
 
         /// <summary>
@@ -223,6 +223,7 @@ namespace RM2k2XP.Converters
             tileset.AutotileBitmaps.Add(ExtractDeepWaterAutotile(chipsetBitmap));
             tileset.AutotileBitmaps.AddRange(ExtractAutotiles(chipsetBitmap));
             tileset.AnimationBitmap = ExtractAnimationSheet(chipsetBitmap);
+            tileset.TilesetBitmap = ExtractTileset(chipsetBitmap);
 
             chipsetBitmap.Dispose();
 
@@ -415,6 +416,60 @@ namespace RM2k2XP.Converters
             }
 
             return autotileBitmaps;
-        }  
+        }
+
+        private Bitmap ExtractTileset(Bitmap chipsetBitmap)
+        {
+            // There is own background color tiles in chipset for top and low layers
+            Color lowLayerBackgroundColor = chipsetBitmap.GetPixel(368, 112);
+            Color topLayerBackgroundColor = chipsetBitmap.GetPixel(288, 128);
+
+            Bitmap destinationBitmap = new Bitmap(96, 768);
+
+            using (Graphics graphics = GraphicsUtils.GetGraphicsForScaling(destinationBitmap))
+            {
+                // Low layer tiles
+                Bitmap temporaryBitmap = chipsetBitmap.Clone(new Rectangle(192, 0, 96, 256), PixelFormat.DontCare);
+                temporaryBitmap.MakeTransparent(lowLayerBackgroundColor);
+
+                graphics.DrawImage(temporaryBitmap, new Rectangle(0, 0, 96, 256));
+
+                temporaryBitmap.Dispose();
+
+                temporaryBitmap = chipsetBitmap.Clone(new Rectangle(288, 0, 96, 128), PixelFormat.DontCare);
+                temporaryBitmap.MakeTransparent(lowLayerBackgroundColor);
+
+                graphics.DrawImage(temporaryBitmap, new Rectangle(0, 256, 96, 128));
+
+                temporaryBitmap.Dispose();
+
+                // Top layer tiles
+                temporaryBitmap = chipsetBitmap.Clone(new Rectangle(288, 128, 96, 128), PixelFormat.DontCare);
+                temporaryBitmap.MakeTransparent(topLayerBackgroundColor);
+
+                graphics.DrawImage(temporaryBitmap, new Rectangle(0, 384, 96, 128));
+
+                temporaryBitmap.Dispose();
+
+                temporaryBitmap = chipsetBitmap.Clone(new Rectangle(384, 0, 96, 256), PixelFormat.DontCare);
+                temporaryBitmap.MakeTransparent(topLayerBackgroundColor);
+
+                graphics.DrawImage(temporaryBitmap, new Rectangle(0, 512, 96, 256));
+
+                temporaryBitmap.Dispose();
+            }
+
+            // XP tiles are twice the size of 2000 tiles so they need to scaled up
+            Bitmap scaledBitmap = new Bitmap(256, 768 * 2);
+
+            using (Graphics scaleGraphics = GraphicsUtils.GetGraphicsForScaling(scaledBitmap))
+            {
+                scaleGraphics.DrawImage(destinationBitmap, new Rectangle(0, 0, 96 * 2, 768 * 2));
+            }
+
+            destinationBitmap.Dispose();
+
+            return scaledBitmap;
+        }
     }
 }
