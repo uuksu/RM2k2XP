@@ -9,6 +9,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RM2k2XP.Converters", "RM2k2
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RM2k2XP.Gui", "RM2k2XP.Gui\RM2k2XP.Gui.csproj", "{CDF3D99B-7F03-4313-85AA-FE6A0A6363F1}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Resources", "Resources", "{26472B54-8FF0-4BD7-8F76-1229DDDEE381}"
+	ProjectSection(SolutionItems) = preProject
+		Resources\charset_icon.png = Resources\charset_icon.png
+		Resources\chipset_icon.png = Resources\chipset_icon.png
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

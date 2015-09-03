@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -47,6 +49,7 @@
             this.chipsetSelectionButton = new System.Windows.Forms.Button();
             this.tilesetOutputDirectorySelectButton = new System.Windows.Forms.Button();
             this.chipsetConvertButton = new System.Windows.Forms.Button();
+            this.tabIconImageList = new System.Windows.Forms.ImageList(this.components);
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -59,6 +62,7 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.ImageList = this.tabIconImageList;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -68,10 +72,11 @@
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.tableLayoutPanel1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.ImageIndex = 0;
+            this.tabPage1.Location = new System.Drawing.Point(4, 23);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(498, 230);
+            this.tabPage1.Size = new System.Drawing.Size(498, 229);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Charset";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -166,9 +171,10 @@
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.tableLayoutPanel2);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.ImageIndex = 1;
+            this.tabPage2.Location = new System.Drawing.Point(4, 23);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Size = new System.Drawing.Size(498, 230);
+            this.tabPage2.Size = new System.Drawing.Size(498, 229);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Chipset";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -260,6 +266,13 @@
             this.chipsetConvertButton.UseVisualStyleBackColor = true;
             this.chipsetConvertButton.Click += new System.EventHandler(this.chipsetConvertButton_Click);
             // 
+            // tabIconImageList
+            // 
+            this.tabIconImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("tabIconImageList.ImageStream")));
+            this.tabIconImageList.TransparentColor = System.Drawing.Color.Transparent;
+            this.tabIconImageList.Images.SetKeyName(0, "charset_icon.png");
+            this.tabIconImageList.Images.SetKeyName(1, "chipset_icon.png");
+            // 
             // MainForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -302,6 +315,7 @@
         private System.Windows.Forms.Button chipsetSelectionButton;
         private System.Windows.Forms.Button tilesetOutputDirectorySelectButton;
         private System.Windows.Forms.Button chipsetConvertButton;
+        private System.Windows.Forms.ImageList tabIconImageList;
     }
 }
 
