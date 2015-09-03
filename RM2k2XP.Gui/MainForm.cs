@@ -129,5 +129,11 @@ namespace RM2k2XP.Gui
             MessageBox.Show("Conversion successful!", "Conversion successful!", MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
         }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AboutBox aboutBox = new AboutBox();
+            aboutBox.ShowDialog();
+        }
     }
 }

@@ -50,11 +50,14 @@
             this.tilesetOutputDirectorySelectButton = new System.Windows.Forms.Button();
             this.chipsetConvertButton = new System.Windows.Forms.Button();
             this.tabIconImageList = new System.Windows.Forms.ImageList(this.components);
+            this.menuStrip = new System.Windows.Forms.MenuStrip();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
+            this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -63,10 +66,10 @@
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.ImageList = this.tabIconImageList;
-            this.tabControl1.Location = new System.Drawing.Point(0, 0);
+            this.tabControl1.Location = new System.Drawing.Point(0, 24);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(506, 256);
+            this.tabControl1.Size = new System.Drawing.Size(506, 232);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -76,7 +79,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 23);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(498, 229);
+            this.tabPage1.Size = new System.Drawing.Size(498, 205);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Charset";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -109,9 +112,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(83, 13);
+            this.label1.Size = new System.Drawing.Size(160, 13);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Original charset:";
+            this.label1.Text = "RPG Maker 2000/2003 charset:";
             // 
             // label2
             // 
@@ -174,7 +177,7 @@
             this.tabPage2.ImageIndex = 1;
             this.tabPage2.Location = new System.Drawing.Point(4, 23);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Size = new System.Drawing.Size(498, 229);
+            this.tabPage2.Size = new System.Drawing.Size(498, 205);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Chipset";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -207,9 +210,9 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(3, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(82, 13);
+            this.label3.Size = new System.Drawing.Size(159, 13);
             this.label3.TabIndex = 0;
-            this.label3.Text = "Original chipset:";
+            this.label3.Text = "RPG Maker 2000/2003 chipset:";
             // 
             // label4
             // 
@@ -273,11 +276,29 @@
             this.tabIconImageList.Images.SetKeyName(0, "charset_icon.png");
             this.tabIconImageList.Images.SetKeyName(1, "chipset_icon.png");
             // 
+            // menuStrip
+            // 
+            this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aboutToolStripMenuItem});
+            this.menuStrip.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip.Name = "menuStrip";
+            this.menuStrip.Size = new System.Drawing.Size(506, 24);
+            this.menuStrip.TabIndex = 1;
+            this.menuStrip.Text = "menuStrip1";
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
+            this.aboutToolStripMenuItem.Text = "About...";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(506, 256);
             this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.menuStrip);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "MainForm";
@@ -290,7 +311,10 @@
             this.tabPage2.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
+            this.menuStrip.ResumeLayout(false);
+            this.menuStrip.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -316,6 +340,8 @@
         private System.Windows.Forms.Button tilesetOutputDirectorySelectButton;
         private System.Windows.Forms.Button chipsetConvertButton;
         private System.Windows.Forms.ImageList tabIconImageList;
+        private System.Windows.Forms.MenuStrip menuStrip;
+        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
     }
 }
 
