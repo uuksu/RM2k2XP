@@ -12,7 +12,7 @@ namespace RM2k2XP.Cli
         [ValueList(typeof(List<string>), MaximumElements = 1)]
         public IList<string> InputPaths { get; set; }
 
-        [Option('t', "type", Required = true, HelpText = "Source resource type")]
+        [Option('t', "type", Required = true, HelpText = "Source resource type (charset/chipset)")]
         public string Type { get; set; }
 
         [HelpOption]
