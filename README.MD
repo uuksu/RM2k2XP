@@ -5,7 +5,6 @@ RM2k2XP can be used to convert old RPG Maker 2000/2003 styled charset and chipse
 RM2k2XP has same functionality as 2XC and 2kxp but does it better and works on modern non-japanese Windows.
 
 ## Usage
----------
 
 RM2k2XP has Windows application and cli application which both provide same functionality
 but with different interface.
