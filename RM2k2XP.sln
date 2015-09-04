@@ -15,6 +15,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Resources", "Resources", "{
 		Resources\chipset_icon.png = Resources\chipset_icon.png
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Deploy", "Deploy", "{400154D9-8EF0-4A25-BF76-01443A149232}"
+	ProjectSection(SolutionItems) = preProject
+		Deploy\7za-license.txt = Deploy\7za-license.txt
+		Deploy\7za.exe = Deploy\7za.exe
+		Deploy\deploy.bat = Deploy\deploy.bat
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
