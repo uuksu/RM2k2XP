@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RM2k2XP.Converters.Formats
 {
@@ -13,7 +9,7 @@ namespace RM2k2XP.Converters.Formats
 
         public void Save(string name)
         {
-            Bitmap.Save(string.Format("{0}.png", name));
+            Bitmap.Save(String.Format("{0}.png", name));
         }
 
         public void Dispose()

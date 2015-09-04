@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using RM2k2XP.Converters.Formats;
 
 namespace RM2k2XP.Converters
@@ -16,7 +12,7 @@ namespace RM2k2XP.Converters
         /// Describes how single characters are positioned in 2000 charset and in XP charset.
         /// Format: source index x, source index y, destination index x, destination index y.
         /// </summary>
-        private static List<List<int>> rpgMaker2000CharPositionToXPMap = new List<List<int>>
+        private static readonly List<List<int>> rpgMaker2000CharPositionToXPMap = new List<List<int>>
         {
             new List<int> {0, 0, 1, 3},
             new List<int> {1, 0, 0, 3},

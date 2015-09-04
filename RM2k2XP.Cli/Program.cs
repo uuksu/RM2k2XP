@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using CommandLine;
 using RM2k2XP.Converters;
 using RM2k2XP.Converters.Formats;
