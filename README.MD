@@ -33,7 +33,7 @@ Using Windows application is more straightforward. Just select your input file a
 
 ## Binaries
 
-Latest builds can be found from [here](http://uuksu.kapsi.fi/other/RM2k2XP).
+Latest builds can be found from [here](http://uuksu.fi/other/RM2k2XP).
 
 ## Building
 
